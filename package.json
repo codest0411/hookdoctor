@@ -1,0 +1,55 @@
+{
+  "name": "hookdoctor",
+  "version": "0.1.0",
+  "description": "Offline, read-only Git hook diagnostics: find out why your hooks silently don't run",
+  "type": "module",
+  "bin": {
+    "hookdoctor": "./bin/hookdoctor.js"
+  },
+  "main": "./src/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./src/index.js"
+    }
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "keywords": [
+    "git",
+    "hooks",
+    "githooks",
+    "husky",
+    "lefthook",
+    "simple-git-hooks",
+    "pre-commit",
+    "doctor",
+    "diagnostics",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "build:types": "tsc -p tsconfig.build.json",
+    "test": "node --test test/unit/**/*.test.js test/e2e/**/*.test.js",
+    "test:coverage": "node --test --experimental-test-coverage --test-coverage-lines=90 test/unit/**/*.test.js test/e2e/**/*.test.js",
+    "dogfood": "node ./bin/hookdoctor.js --fail-on error"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.15.0",
+    "typescript": "^7.0.2"
+  }
+}
